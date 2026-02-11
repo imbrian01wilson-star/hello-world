@@ -1,6 +1,8 @@
 import { Component } from "react";
 import "./style.css";
 
+let interval;
+
 class Title extends Component {
   render() {
     return <h1>time is:</h1>;
@@ -14,13 +16,16 @@ class Timer extends Component {
       time: new Date().toLocaleTimeString(),
     };
   }
-  render() {
-    setInterval(() => {
+
+  componentDidMount() {
+    interval = setInterval(() => {
       this.setState({
         time: new Date().toLocaleTimeString(),
       });
     }, 1000);
+  }
 
+  render() {
     return <h1 className="timer">{this.state.time}</h1>;
   }
 }
