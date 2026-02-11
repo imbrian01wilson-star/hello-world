@@ -1,41 +1,27 @@
 import { Component } from "react";
 import "./style.css";
-
-let interval;
-
-class Title extends Component {
-  render() {
-    return <h1>time is:</h1>;
-  }
-}
-
-class Timer extends Component {
-  constructor() {
-    super();
-    this.state = {
-      time: new Date().toLocaleTimeString(),
-    };
-  }
-
-  componentDidMount() {
-    interval = setInterval(() => {
-      this.setState({
-        time: new Date().toLocaleTimeString(),
-      });
-    }, 1000);
-  }
-
-  render() {
-    return <h1 className="timer">{this.state.time}</h1>;
-  }
-}
+import Timer from "./Timer";
+import Title from "./Title";
 
 class App extends Component {
+  constructor(){
+    super()
+    this.state={
+      title:'time is:'
+    }
+  }
+
+  changeTitle=()=>{
+    this.setState({
+      title:'this is what you see!'
+    })
+  }
+
   render() {
     return (
       <div className="main">
-        <Title />
-        <Timer />
+        <Title title={this.state.title}/>
+        <Timer changeTitle={this.changeTitle}/>
       </div>
     );
   }

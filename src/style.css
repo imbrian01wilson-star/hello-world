@@ -18,3 +18,21 @@
     height: 200px;
 }
 
+.btn{
+    border: none;
+    padding: 0.8rem;
+    color: white;
+    background-color: blueviolet;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover{
+    background-color: rgb(96, 24, 163);
+}
+
+.btn:active{
+    background-color: rgb(165, 78, 247);
+}
+
