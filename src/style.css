@@ -16,6 +16,7 @@
   box-shadow: 0 0 20px rgb(104, 217, 255);
   width: 200px;
   height: 200px;
+  cursor: pointer;
 }
 
 .btn {
