@@ -29,15 +29,16 @@ import Title from "./Title";
 
 const App = () => {
   const [title, setTitle] = useState("timer:");
+  const [isLight, setBgColor] = useState(false);
 
-  const changeTitle = () => {
-    setTitle("this is what you see!");
+  const changeBgColor = () => {
+    setBgColor(!isLight);
   };
 
   return (
-    <div className="main">
+    <div className={isLight ? "main" : "main dark-bg"}>
       <Title title={title} />
-      <Timer changeTitle={changeTitle} />
+      <Timer changeBgColor={changeBgColor} />
     </div>
   );
 };

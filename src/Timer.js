@@ -82,7 +82,7 @@ let interval;
 //   }
 // }
 
-const Timer = ({ changeTitle }) => {
+const Timer = ({ changeBgColor }) => {
   let [second, setSecond] = useState(0);
   let [minute, setMinute] = useState(0);
   let [hour, setHour] = useState(0);
@@ -123,8 +123,8 @@ const Timer = ({ changeTitle }) => {
     <>
       <h1 className="timer">{`${h > 9 ? h : "0" + h} : ${m > 9 ? m : "0" + m} : ${s > 9 ? s : "0" + s}`}</h1>
       <div className="buttons">
-        <button className="btn" onClick={changeTitle}>
-          change title
+        <button className="btn" onClick={changeBgColor}>
+          change bgColor
         </button>
         <button className="btn-start" onClick={startInterval}>
           Start
