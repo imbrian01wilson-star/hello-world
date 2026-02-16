@@ -1,6 +1,7 @@
-import { Component, useState } from "react";
+import { Component, useContext, useState } from "react";
 import "./style.css";
 import TimerList from "./TimerList";
+import { Context } from "./Context";
 
 let interval;
 
@@ -39,8 +40,10 @@ const Timer = (props) => {
   };
 
   const handleSaveTime = () => {
-    props.setTimerList([...props.timerList, newTime]);
+    context.setTimerList([...context.timerList, newTime]);
   };
+
+  const context = useContext(Context);
 
   let h = hour;
   let m = minute;
@@ -48,7 +51,10 @@ const Timer = (props) => {
   let newTime = `${h > 9 ? h : "0" + h} : ${m > 9 ? m : "0" + m} : ${s > 9 ? s : "0" + s}`;
   return (
     <>
-      <h1 className="timer" onClick={handleSaveTime}>{`${h > 9 ? h : "0" + h} : ${m > 9 ? m : "0" + m} : ${s > 9 ? s : "0" + s}`}</h1>
+      <h1
+        className="timer"
+        onClick={handleSaveTime}
+      >{`${h > 9 ? h : "0" + h} : ${m > 9 ? m : "0" + m} : ${s > 9 ? s : "0" + s}`}</h1>
       <div className="buttons">
         <button className="btn" onClick={props.changeBgColor}>
           change bgColor
@@ -63,7 +69,7 @@ const Timer = (props) => {
           Reset
         </button>
       </div>
-      <TimerList>{props.timerList}</TimerList>
+      
     </>
   );
 };

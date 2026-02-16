@@ -2,9 +2,8 @@ import { Component, useState } from "react";
 import "./style.css";
 import Timer from "./Timer";
 import Title from "./Title";
+import { Context } from "./Context";
 import TimerList from "./TimerList";
-
-
 
 const App = () => {
   const [title, setTitle] = useState("timer:");
@@ -16,10 +15,15 @@ const App = () => {
   };
 
   return (
-    <div className={isLight ? "main" : "main dark-bg"}>
-      <Title title={title} />
-      <Timer changeBgColor={changeBgColor} timerList={timerList} setTimerList={setTimerList}/>
-    </div>
+    <Context.Provider
+      value={{ timerList: timerList, setTimerList: setTimerList }}
+    >
+      <div className={isLight ? "main" : "main dark-bg"}>
+        <Title title={title} />
+        <Timer changeBgColor={changeBgColor} />
+        <TimerList></TimerList>
+      </div>
+    </Context.Provider>
   );
 };
 
